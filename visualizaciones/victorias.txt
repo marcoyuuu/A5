@@ -1,0 +1,9 @@
+Conteo de victorias por agente:
+Ganador
+MCTS    890
+Rand    110
+
+Porcentaje de victorias (%):
+Ganador
+MCTS    89.0
+Rand    11.0

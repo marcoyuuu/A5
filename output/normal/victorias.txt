@@ -1,0 +1,11 @@
+Conteo victorias:
+Ganador
+MCTS          268
+Heuristico    163
+Rand           69
+
+% victorias:
+Ganador
+MCTS          53.6
+Heuristico    32.6
+Rand          13.8
