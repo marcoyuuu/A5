@@ -13,19 +13,25 @@ from briscas.game import BriscasGame
 from briscas.agents import AgenteMCTS, AgenteAleatorio, AgenteHeuristico
 from briscas.utils import Logger
 
-# Parámetros
-ITER_MCTS   = 300
+# Parámetros MCTS óptimos (sección 4.4)
+ITER_MCTS   = 500    # iteraciones por decisión
+C_MCTS      = 1.4    # constante de exploración óptima
 N_PARTIDAS  = 500
 BASE_OUTPUT = "output"
 
 
-def crear_agentes(modo_agresivo: bool) -> List:
+def crear_agentes(modo_agresivo: bool, seed: int) -> List:
     """
     Devolvemos los 3 agentes, variando sólo el flag 'modo_agresivo'
     del heurístico (el seguimiento de palo se maneja en BriscasGame).
     """
     return [
-        AgenteMCTS("MCTS", iteraciones=ITER_MCTS),
+        # Ahora pasamos iteraciones, c y seed para reproducibilidad
+        AgenteMCTS("MCTS",
+                   iteraciones=ITER_MCTS,
+                   tiempo_max=None,
+                   c=C_MCTS,
+                   seed=seed),
         AgenteHeuristico("Heuristico", modo_agresivo=modo_agresivo),
         AgenteAleatorio("Rand")
     ]
@@ -37,10 +43,13 @@ def ejecutar_partida(args: Tuple[int, bool, bool, int]) -> dict:
     """
     i, modo_agresivo, seguir_palo, seed = args
 
-    # 1) Creamos los agentes (sin pasarles seguir_palo)
-    jugadores = crear_agentes(modo_agresivo)
+    # 1) Creamos los agentes (incluyendo seed para MCTS)
+    jugadores = crear_agentes(modo_agresivo, seed)
     # 2) Creamos el juego con el flag seguir_palo
-    juego      = BriscasGame(jugadores, seguir_palo=seguir_palo, seed=seed + i)
+    # 2) Creamos el juego con seed fija para reproducibilidad y seguir_palo=True
+    juego      = BriscasGame(jugadores,
+                             seguir_palo=seguir_palo,
+                             seed=seed + i)
 
     # 3) Ejecutamos la partida
     t0      = time.perf_counter()
@@ -154,10 +163,10 @@ def main():
 
         # 1) Simulación
         df = simular_partidas(
-            N_PARTIDAS,
+            n=N_PARTIDAS,
             modo_agresivo=modo,
-            seguir_palo=True,
-            seed=42,
+            seguir_palo=True,    # siempre forzamos seguir palo
+            seed=42,             # semilla base reproducible
             logger=logger
         )
         csv_path = os.path.join(outdir, "res.csv")

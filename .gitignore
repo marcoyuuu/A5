@@ -1,8 +1,12 @@
 # Ignore all __pycache__ folders everywhere
 __pycache__/
+simulations\__pycache__/
 
 # Ignore virtual environment
 /.venv
+/venv
 
 # Ignore logs folder
 /logs
+
+simulations/__pycache__/run_simulation.cpython-313.pyc
