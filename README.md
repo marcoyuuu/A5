@@ -1,10 +1,23 @@
-# Proyecto Briscas AI
+# Universidad de Puerto Rico en Mayagüez  
+### Departamento de Ingeniería Eléctrica y de Computadoras  
+#### ICOM5015 - Inteligencia Artificial
 
-**Asignación 5 – ICOM/CIIC5015 (AI)**
-- **Autores:** Marco Yu Cordero, Samir Ali Rivera
-- **Profesor:** Dr. J. Fernando Vega Riveros
-- **Fecha:** 24 de abril de 2025
-- **Documento asociado:** [Reporte_Asignacion_5_Briscas.pdf](./Reporte_Asignacion_5_Briscas.pdf)
+**Título del Proyecto:** Diseño e Implementación de Agentes Inteligentes para el Juego de Briscas  
+**Asignación 5:** Tarea de Programación – Búsqueda Adversaria 
+
+**Equipo:** Grupo M  
+- **Marco Yu** (Estudiante subgraduado, Ciencias de Computación)  
+- **Samir Rivera** (Estudiante subgraduado, Ingeniería de Software)
+
+**Profesor:** J. Fernando Vega Riveros  
+**Fecha:** 24 de abril de 2025  
+
+**Nota:** Para más detalles, véase el reporte en el archivo  
+`UPRM_BriscasAI_Report_MarcoYu_SamirRivera.pdf`
+
+<p align="center">
+  <img src="https://www.uprm.edu/wdt/resources/seal-rum-uprm-1280x1280px.png" alt="Logo UPRM" width="250" height="250">
+</p>
 
 ---
 
